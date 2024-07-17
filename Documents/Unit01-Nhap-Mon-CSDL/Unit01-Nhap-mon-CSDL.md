@@ -89,4 +89,19 @@ Ví dụ: select * into Student1 from Student
 select tt1, tt2 into ten_table1 from ten_table2
 Ví dụ: select id, name into Student1 from Student
 ```
+- join, subquery
+- nchar, nvarchar
+- timestem
+- schema
+
+- DI, IOC, Bean
+- hypernate, JDBC, JPA
+- security: jwt, oauth
+- trien khai: superiver, docker, dicd
+test: unit test, intergration test
+realtime: websocket, socket
+da luong: thread, kafka, mitvemy
+cache: key value storage, redis
+-micro service
+call api
 
