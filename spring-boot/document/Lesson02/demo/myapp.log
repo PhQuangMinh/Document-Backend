@@ -1,0 +1,9 @@
+2024-08-14 03:24:29 DEBUG DemoApplication:11 - debug log
+2024-08-14 03:24:29 ERROR DemoApplication:12 - error log
+2024-08-14 03:24:29 INFO  DemoApplication:13 - info log
+2024-08-14 03:26:20 FATAL DemoApplication:11 - debug log
+2024-08-14 03:26:20 ERROR DemoApplication:12 - error log
+2024-08-14 03:26:20 INFO  DemoApplication:13 - info log
+2024-08-14 15:37:51 FATAL DemoApplication:11 - debug log
+2024-08-14 15:37:51 ERROR DemoApplication:12 - error log
+2024-08-14 15:37:51 INFO  DemoApplication:13 - info log

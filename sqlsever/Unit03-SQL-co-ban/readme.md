@@ -23,7 +23,7 @@
     from employees
     ```
 #### 2. Where
-- Dùng để lọc dữ liệu dựa trên điều kiện
+- Dùng để lọc dữ liệu dựa trên điều kiện lọc điều kiện thường
 
     ```sql
     SELECT column1, column2, ...
@@ -39,10 +39,13 @@
     ```
 #### 3. Insert into
 - Chèn dự liệu vào bảng:
-
+    
     ```sql
     INSERT INTO table_name (column1, column2, ...)
-    VALUES (value1, value2, ...);   
+    VALUES  (value1, value2, ...),
+            (value1, value2, ...),
+            (value1, value2, ...),
+            (value1, value2, ...);   
     ```
 - Ví dụ:
 
@@ -78,6 +81,8 @@
     DELETE FROM Employees
     WHERE EmployeeID = 1;
     ```
+- Truncate
+- Union
 #### 6. Join
 - Câu lệnh join được sử dụng để kết hợp các hàng từ hai hoặc nhiều bảng dựa trên một điều kiện chung.
 ##### a. Inner join
@@ -124,7 +129,7 @@
     full join departments on employees.department_id = departments.department_id
     ```
 - Ví dụ:
-    - Bảng employees:
+    - Bảng employees:   
     ![alt text](image-3.png)
     - Bảng department:
     ![alt text](image-4.png)
@@ -157,12 +162,18 @@
 - Ngoài hàm count(), còn có các hàm min(), max(), sum(), avg().
 #### 9. Having
 - Having được sử dụng để lọc các nhóm hoặc tập hợp các hàng sau khi sử dụng group by.
+- Having phải sự dùng hàm vì các điều kiện thường sẽ lọc bằng where, ở having, khi tồn tại 2 bản ghi khác nhau ở phần having thì nó sẽ không thỏa mãn.
 - Ví dụ:
     
     ```sql
-    select department_id, count(*) as number_employees
-    from employees
-    group by departmen_id
+5    select department_id, count(*) as number_employees
+
+1    from employees
+
+2    where abc>=0
+
+3    group by departmen_id
+4
     having count(*) > 5
     ```
 ### II. Subquery

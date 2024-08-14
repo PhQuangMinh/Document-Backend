@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello World</title>
+</head>
+    <body>
+        <h1>Thông tin bản thân</h1>
+        <h2 th:text="'Tên: ' + ${user.name}"></h2>
+        <h2 th:text="'Tuổi: ' + ${user.age}"></h2>
+        <h2 th:text="'Địa chỉ: ' + ${user.address}"></h2>
+        <h2 th:text="'Email: ' + ${user.email}"></h2>
+    </body>
+</html>
