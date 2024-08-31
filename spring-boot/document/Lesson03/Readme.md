@@ -11,6 +11,7 @@
 ##### a. Tổng quan
 - **JPA (Java Persistence API)** là 1 giao diện lập trình ứng dụng Java, nó mô tả cách quản lý các mối quan hệ dữ liệu  trong ứng dụng sử dụng Java Platform.
 - JPA cung cấp một mô hình **POJO persistence** cho phép ánh xạ các table/các mối quan hệ giữa các table trong database sang các class/mối quan hệ giữa các object.
+- reflect, annotation, generic,jdbc, servlet
 - **POJO** là những Java object mà chúng không bị hạn chế bởi bất cứ thứ gì khác. Chúng không hiện thực hay được mở rộng từ bất kỳ một class nào khác và chúng cũng không chứa bất kỳ annotation nào trong bản thân chúng. Chúng chỉ chứa các thuộc tính, các phương thức Setter, Getter của những thuộc tính đó và có thể có thêm cả các phương thức override toString() và equals().
 - Ví dụ: table Users với các column (Id, name, age…) sẽ tương ứng với class Users.java với các field Id, name, age… từ đó mỗi khi truy vấn table hay các column ta sẽ truy vấn trực tiếp trên các class, các field của class mà không cần quan tâm tới việc đang dùng loại database nào, dữ liệu database ra sao…
 ##### b. Một số khái niệm JPA

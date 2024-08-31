@@ -1,4 +1,4 @@
-package com.example.demo.dao.repository;
+package com.example.demo.repository;
 
 import com.example.demo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
-    @Query(value = "SELECT * FROM users WHERE email = :email", nativeQuery = true)
+    @Query(value = "SELECT * FROM users u WHERE u.email = ?1", nativeQuery = true)
     User findByEmail(@Param("email") String email);
 }
