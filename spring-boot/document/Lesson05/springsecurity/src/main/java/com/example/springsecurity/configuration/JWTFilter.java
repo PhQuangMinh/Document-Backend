@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNullApi;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,13 +23,17 @@ import java.io.IOException;
 public class JWTFilter extends OncePerRequestFilter {
     private final JWTTokenService jwtTokenService;
 
-    private UserService userService;
+    private final UserService userService;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        if (request.getRequestURI().equals("/v1/login")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
         String authorizationHeader = request.getHeader("Authorization");
         String token = null;
         String username = null;
-
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
             username = jwtTokenService.extractUsername(token);

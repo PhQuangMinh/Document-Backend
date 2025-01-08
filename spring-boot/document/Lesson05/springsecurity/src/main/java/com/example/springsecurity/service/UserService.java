@@ -3,6 +3,7 @@ package com.example.springsecurity.service;
 import com.example.springsecurity.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService {
     Page<User> findAll(int size, int page, String sortBy);
@@ -10,4 +11,5 @@ public interface UserService {
     User save(User user);
     void deleteById(String id);
     UserDetails loadUserByUserName(String userName);
+    UserDetailsService loadUserDetailsService();
 }

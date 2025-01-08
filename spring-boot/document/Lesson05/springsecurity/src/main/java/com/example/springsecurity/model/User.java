@@ -19,10 +19,10 @@ public class User {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "full_name")
-    private String fullName;
+    @Column(name = "fullname")
+    private String fullname;
 
-    @Column(name = "user_name")
+    @Column(name = "username")
     private String username;
 
     @Column(name = "password")
@@ -33,4 +33,16 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", fullname='" + fullname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }

@@ -1,8 +1,9 @@
 package com.example.springsecurity.controller;
 
-import com.example.springsecurity.model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @GetMapping("/me")
-    public ResponseEntity<User> getCurrentUser(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
+    public ResponseEntity<UserDetails> getCurrentUser(Authentication authentication) {
+        UserDetails user = (UserDetails) authentication.getPrincipal();
         return ResponseEntity.ok(user);
     }
 }

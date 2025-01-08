@@ -8,10 +8,13 @@ import com.example.springsecurity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -49,8 +52,24 @@ public class UserServiceImpl implements UserService{
     public UserDetails loadUserByUserName(String userName) {
         Optional<User> user = userRepository.findByUsername(userName);
         if (user.isEmpty()) throw new NotFoundException("User not found - " + userName);
-        return new org.springframework.security.core.userdetails.User(user.get().getUsername(), user.get().getPassword(),
-                new ArrayList<>());
+        return new org.springframework.security.core.userdetails.User(
+                user.get().getUsername(),
+                user.get().getPassword(),
+                new ArrayList<>(Collections.singletonList(new SimpleGrantedAuthority(user.get().getRole().name()))));
+    }
+
+    public UserDetailsService loadUserDetailsService() {
+        return username -> {
+            Optional<User> user = userRepository.findByUsername(username);
+            if (user.isEmpty()){
+                throw new NotFoundException("User not found - " + username);
+            }
+            return new org.springframework.security.core.userdetails.User(
+                    user.get().getUsername(),
+                    user.get().getPassword(),
+                    new ArrayList<>(Collections.singletonList(new SimpleGrantedAuthority(user.get().getRole().name())))
+            );
+        };
     }
 
 }
